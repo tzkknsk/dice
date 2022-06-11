@@ -11,10 +11,16 @@ def dice(input_face_num):
     else:
         return random.randint(1, input_face_num)
 
-if st.button('6面体サイコロを振る'):
-     dice6 = dice(6)
-     st.write(dice6)
+roll_6 = "" 
+    
+if 'exp01' not in st.session_state:
+    st.session_state.exp01 = 0
 
-if st.button('24面体サイコロを振る'):
-     dice24 = dice(24)
-     st.write(dice24)
+exp01_buttom = st.button('６面体サイコロを振る')
+
+if exp01_buttom and st.session_state.exp01 == 0:
+    roll_6 = dice(6)
+    st.session_state.exp01 = roll_6
+
+st.write(roll_6)
+    
